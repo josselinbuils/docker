@@ -29,3 +29,5 @@
 - Leave a container bash: `exit`
 
 - Get logs from a container: `docker logs [id/name]`
+
+- List open ports on Ubuntu: `netstat -tulnp`
