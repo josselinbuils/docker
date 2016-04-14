@@ -1,7 +1,5 @@
 # docker
 
-## Images
-
 ### MongoDB
 
 - Go to docker/MongoDB
@@ -14,22 +12,16 @@
 - Run `docker build -t pizzaday .`
 - Run `docker run --name pizzaDay -d --link mongo-dev:mongo-dev pizzaday`
 
-## Docker commands
+### Docker commands
 
-#### List main images
-`docker image`
+- List main images: `docker image`
 
-#### List running containers
-`docker ps`
+- List running containers: `docker ps`
 
-#### List all containers
-`docker ps -a`
+- List all containers: `docker ps -a`
 
-#### Force to remove an image and its containers
-`docker rmi -f [id/name]`
+- Remove an image and its containers: `docker rmi -f [id/name]`
 
-#### Access a container bash
-`docker exec -i -t [id/name] bash`
+- Access a container bash: `docker exec -i -t [id/name] bash`
 
-#### Leave a container bash
-`exit`
+- Leave a container bash: `exit`
