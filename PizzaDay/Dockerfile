@@ -7,8 +7,10 @@ RUN apt-get update
 RUN apt-get install -y git
 RUN git clone https://github.com/josselinbuils/PizzaDay.git
 
+ECHO ls
+
 # Install node dependencies
-RUN cd /PizzaDay
+WORKDIR "/PizzaDay"
 RUN npm install
 
 # Expose ports
