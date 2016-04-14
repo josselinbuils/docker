@@ -27,3 +27,5 @@
 - Access a container bash: `docker exec -i -t [id/name] bash`
 
 - Leave a container bash: `exit`
+
+- Get logs from a container: `docker logs [id/name]`
