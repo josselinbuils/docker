@@ -6,6 +6,8 @@ MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 RUN apt-get update
 RUN apt-get install -y git
 RUN git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git /root/PizzaDay
+RUN ls -lh
+ADD /root/PizzaDay /root/PizzaDay
 
 # Install node dependencies
 RUN cd /root/PizzaDay
