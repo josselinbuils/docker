@@ -7,9 +7,7 @@ RUN apt-get update
 RUN apt-get install -y git
 RUN \
    git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git && \
-   ls -lh && \
    cd PizzaDay && \
-   ls -lh && \
    npm install
 
 # Expose ports
