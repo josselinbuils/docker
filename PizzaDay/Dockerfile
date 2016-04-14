@@ -5,9 +5,7 @@ MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 # Get PizzaDay source files
 RUN apt-get update
 RUN apt-get install -y git
-RUN git clone https://github.com/josselinbuils/PizzaDay.git
-
-ECHO ls
+RUN git clone git@github.com/josselinbuils/PizzaDay.git
 
 # Install node dependencies
 WORKDIR "/PizzaDay"
