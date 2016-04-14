@@ -27,3 +27,9 @@
 
 #### Force to remove an image and its containers
 `docker rmi -f [id/name]`
+
+#### Access a container bash
+`docker exec -i -t [id/name] bash`
+
+#### Leave a container bash
+`exit`
