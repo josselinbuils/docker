@@ -9,6 +9,7 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git
 
 # Install node dependencies
 RUN cd /root/PizzaDay
+RUN ls
 RUN npm install
 
 # Expose ports
