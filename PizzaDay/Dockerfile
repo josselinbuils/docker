@@ -5,11 +5,10 @@ MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 # Get PizzaDay source files
 RUN apt-get update
 RUN apt-get install -y git
-RUN git clone https://github.com/josselinbuils/PizzaDay.git
-ADD /PizzaDay /PizzaDay
+RUN git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git ~/PizzaDay
 
 # Install node dependencies
-WORKDIR "/PizzaDay"
+cd ~/PizzaDay
 RUN npm install
 
 # Expose ports
