@@ -14,7 +14,9 @@
 
 ### Docker commands
 
-- List main images: `docker image`
+- List main images: `docker images`
+
+- List all images: `docker images -a`
 
 - List running containers: `docker ps`
 
