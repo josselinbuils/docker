@@ -10,6 +10,8 @@ RUN \
    npm install -g npm && \
    npm install
 
+WORKDIR PizzaDay
+
 EXPOSE 9000
 
 CMD [ "npm", "start" ]
