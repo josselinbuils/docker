@@ -10,14 +10,12 @@ This repository contains docker configuration files which allow to run my node a
 
 - MongoDB
 
-  - Go to docker/MongoDB
-  - `docker build -t mongodb .`
+  - `docker build -t mongodb ./MongoDB`
   - `docker run --name MongoDB -d -v /opt/mongodb/db:/data/db mongodb`
 
 - PizzaDay
 
-  - Go to docker/PizzaDay
-  - `docker build -t pizzaday .`
+  - `docker build -t pizzaday ./PizzaDay`
   - `docker run --name PizzaDay -d --link MongoDB:MongoDB -p 9000:9000 pizzaday`
 
 ### Docker commands
