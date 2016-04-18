@@ -10,7 +10,7 @@ services:
     volumes:
      - /opt/mongodb/db:/data/db
     depends_on:
-     - MongoDB
+     - mongoDB
   mongoDB:
     build: ./MongoDB
     image: MongoDB
