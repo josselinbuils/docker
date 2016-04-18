@@ -6,7 +6,5 @@ pizzaday:
     - "80:9000"
   volumes:
     - /opt/mongodb/db:/data/db
-  depends_on:
-    - mongodb
 mongodb:
   build: ./MongoDB
