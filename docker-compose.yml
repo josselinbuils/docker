@@ -4,13 +4,13 @@ services:
     build: ./PizzaDay
     image: PizzaDayImg
     links:
-    - mongoDB
+    - MongoDB
     ports:
      - "80:9000"
     volumes:
      - /opt/mongodb/db:/data/db
     depends_on:
-     - mongoDB
+     - MongoDB
   MongoDB:
     build: ./MongoDB
     image: MongoDBImg
