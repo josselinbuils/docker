@@ -4,7 +4,7 @@ services:
     build: ./PizzaDay
     image: PizzaDay
     links:
-    - MongoDB
+    - mongoDB
     ports:
      - "80:9000"
     volumes:
