@@ -11,7 +11,7 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git
 
 WORKDIR MALV-API
 
-COPY malvapi.config.json config.json
+COPY config.json config.json
 
 EXPOSE 8080
 
