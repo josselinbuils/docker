@@ -2,7 +2,7 @@ version: '2'
 services:
   pizzaDay:
     build: ./PizzaDay
-    image: PizzaDay
+    image: pizzaDay
     links:
     - mongoDB
     ports:
@@ -13,4 +13,4 @@ services:
      - mongoDB
   mongoDB:
     build: ./MongoDB
-    image: MongoDB
+    image: mongoDB
