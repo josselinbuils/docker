@@ -11,6 +11,8 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git
 
 WORKDIR MALV-API
 
+COPY MALV-API/config.json .
+
 EXPOSE 8080
 
 CMD ["npm", "start"]
