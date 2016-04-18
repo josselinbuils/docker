@@ -2,11 +2,20 @@
 
 This repository contains docker configuration files which allow to run my node applications using a Ubuntu 15.04 server.
 
+### Configuration
+
+  - Create a config.json file in docker/MALV-API
+
 ### Run
 
-`docker-compose up -d`
+  - `docker-compose up -d`
 
 ### Run manually
+
+- MALV-API
+
+  - `docker build -t malvapi ./MALV-API`
+  - `docker run --name MALVAPI -d -p 8080:8080 malvapi`
 
 - MongoDB
 
