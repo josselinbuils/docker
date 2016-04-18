@@ -13,8 +13,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN add-apt-repository ppa:git-core/ppa && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y git && \
     git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git && \
     cd PizzaDay && \
