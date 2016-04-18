@@ -1,4 +1,4 @@
-FROM nodesource/vivid:4.4.2
+FROM nodesource/trusty:4.4.2
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
