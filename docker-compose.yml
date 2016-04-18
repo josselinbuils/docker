@@ -1,5 +1,5 @@
 malvapi:
-  build: ./MALV_API
+  build: ./MALV-API
   ports:
     - "8080:8080"
 mongodb:

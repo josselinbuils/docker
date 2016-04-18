@@ -5,11 +5,11 @@ MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 RUN apt-get update
 RUN apt-get install -y git
 RUN git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
-    cd MALV_API && \
+    cd MALV-API && \
     npm install -g npm && \
     npm install
 
-WORKDIR MALV_API
+WORKDIR MALV-API
 
 EXPOSE 8080
 
