@@ -13,11 +13,13 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN apt-get install -y git && \
-   git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git && \
-   cd PizzaDay && \
-   npm install -g npm && \
-   npm install
+RUN add-apt-repository ppa:git-core/ppa && \
+    apt-get update && \
+    apt-get install -y git && \
+    git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git && \
+    cd PizzaDay && \
+    npm install -g npm && \
+    npm install
 
 WORKDIR PizzaDay
 
