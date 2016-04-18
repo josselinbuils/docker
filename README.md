@@ -1,16 +1,24 @@
 # docker
 
-### MongoDB
+This repository contains docker configuration files which allow to run my node applications using a Ubuntu 15.04 server.
 
-- Go to docker/MongoDB
-- Run `docker build -t mongodb .`
-- Run `docker run --name MongoDB -d -v /opt/mongodb/db:/data/db mongodb`
+### Run
 
-### PizzaDay
+`docker-compose up -d`
 
-- Go to docker/PizzaDay
-- Run `docker build -t pizzaday .`
-- Run `docker run --name PizzaDay -d --link MongoDB:MongoDB -p 9000:9000 pizzaday`
+### Run manually
+
+- MongoDB
+
+  - Go to docker/MongoDB
+  - `docker build -t mongodb .`
+  - `docker run --name MongoDB -d -v /opt/mongodb/db:/data/db mongodb`
+
+- PizzaDay
+
+  - Go to docker/PizzaDay
+  - `docker build -t pizzaday .`
+  - `docker run --name PizzaDay -d --link MongoDB:MongoDB -p 9000:9000 pizzaday`
 
 ### Docker commands
 
