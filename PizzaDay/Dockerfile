@@ -1,4 +1,4 @@
-FROM nodesource/trusty:4.4.2
+FROM ubuntu:15.10
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
