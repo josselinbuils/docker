@@ -1,14 +1,12 @@
-version: '1'
-services:
-  pizzaday:
-    build: ./PizzaDay
-    links:
+pizzaday:
+  build: ./PizzaDay
+  links:
     - mongodb
-    ports:
-     - "80:9000"
-    volumes:
-     - /opt/mongodb/db:/data/db
-    depends_on:
-     - mongodb
-  mongodb:
-    build: ./MongoDB
+  ports:
+    - "80:9000"
+  volumes:
+    - /opt/mongodb/db:/data/db
+  depends_on:
+    - mongodb
+mongodb:
+  build: ./MongoDB
