@@ -10,6 +10,10 @@ This repository contains docker configuration files which allow to run my node a
 
   - `docker-compose up -d`
 
+### Build without cache
+
+  - `docker-compose build --no-cache [service]`
+
 ### Run manually
 
 - MALV-API
