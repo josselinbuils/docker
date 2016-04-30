@@ -11,6 +11,8 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git
 
 WORKDIR PizzaDay
 
+COPY config.json server/config.json
+
 EXPOSE 9000
 
 CMD ["npm", "start"]
