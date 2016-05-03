@@ -12,4 +12,4 @@ WORKDIR /data
 
 EXPOSE 27017
 
-CMD ["mongod", "--nojournal]
+CMD ["mongod", "--nojournal"]
