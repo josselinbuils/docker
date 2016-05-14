@@ -6,7 +6,7 @@ This repository contains docker configuration files which allow to run my node a
 
   - `docker-compose up -d`
 
-### Build and run manually
+### Run manually
 
 - MALV-API
 
