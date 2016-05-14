@@ -1,8 +1,6 @@
-FROM node:4.4.4
+FROM ubuntu
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
-
-CMD []
 
 # Install Node.js
 RUN apt-get update && /

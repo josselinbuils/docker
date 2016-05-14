@@ -1,13 +1,6 @@
-FROM ubuntu:16.04
+FROM ubuntu
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
-
-CMD []
-
-# Install Node.js
-RUN apt-get update && /
-    apt-get install -y nodejs && /
-    rm -rf /var/lib/apt/lists/*
 
 # Install MALV-API
 RUN apt-get update && /
