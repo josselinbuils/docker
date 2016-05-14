@@ -1,10 +1,9 @@
-FROM ubuntu:16.04
+FROM buildpack-deps:xenial
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
 # Install MALV-API
-RUN chmod -R 777 /var/lib/apt/lists && /
-    apt-get update && /
+RUN apt-get update && /
     apt-get install -y git && /
     rm -rf /var/lib/apt/lists/* && \
     git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
