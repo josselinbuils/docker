@@ -11,7 +11,7 @@ RUN apt-get update && \
         build-essential \
         openssl \
         libssl-dev \
-        pkg-config
+        pkg-config \
         git && \
     rm -rf /var/lib/apt/lists/*
 
@@ -35,10 +35,7 @@ RUN set -ex && \
     tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1
 
 # Install MALV-API
-RUN apt-get update && \
-    apt-get install -y git && \
-    rm -rf /var/lib/apt/lists/* && \
-    git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
+RUN git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
     cd MALV-API && \
     git pull && \
     npm install -g npm && \
