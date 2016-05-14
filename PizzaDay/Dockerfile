@@ -6,6 +6,7 @@ RUN apt-get update && \
     apt-get install -y git && \
     git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git && \
     cd PizzaDay && \
+    git pull && \
     npm install -g npm && \
     npm install
 
