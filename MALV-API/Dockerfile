@@ -1,5 +1,6 @@
 FROM scratch
-ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
+
+RUN curl -O -L https://partner-images.canonical.com/core/releases/precise/release/ubuntu-precise-core-cloudimg-amd64-root.tar.gz
 
 # a few minor docker-specific tweaks
 # see https://github.com/docker/docker/blob/master/contrib/mkimage/debootstrap
