@@ -2,7 +2,7 @@ FROM scratch
 
 ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
 
-RUN su && \
+RUN chmod 777 -R /var/lib/apt/ && \
     apt-get update && /
     apt-get install -y git && /
     rm -rf /var/lib/apt/lists/* && \
