@@ -3,8 +3,8 @@ FROM buildpack-deps:xenial
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
 # Install git
-RUN apt-get update && /
-    apt-get install -y git
+RUN apt-get update /
+    && apt-get install -y git
 
 # Install MALV-API
 RUN git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
