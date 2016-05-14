@@ -1,7 +1,5 @@
 FROM scratch
 
-ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
-
 # delete all the apt list files since they're big and get stale quickly
 RUN apt-get update && /
     apt-get install -y git && /
