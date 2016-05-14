@@ -1,11 +1,13 @@
-FROM nodesource/vivid:4.4.2
+FROM node:4.4.4
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
-RUN apt-get update
-RUN apt-get install -y git
-RUN git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
+RUN apt-get update && /
+    apt-get install -y git && /
+    rm -rf /var/lib/apt/lists/* && \
+    git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
     cd MALV-API && \
+    git pull && \
     npm install -g npm && \
     npm install
 
