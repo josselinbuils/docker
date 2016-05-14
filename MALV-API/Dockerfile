@@ -1,6 +1,8 @@
 FROM scratch
 
-# delete all the apt list files since they're big and get stale quickly
+ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
+
+# Install MALV-API
 RUN apt-get update && /
     apt-get install -y git && /
     rm -rf /var/lib/apt/lists/* && \
