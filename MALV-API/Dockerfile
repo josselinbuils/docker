@@ -1,4 +1,4 @@
-FROM nodesource/vivid:4.4.2
+FROM ubuntu:16.04
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
