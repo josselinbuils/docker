@@ -4,8 +4,6 @@ malvapi:
     - "8080:8080"
 pizzaday:
   build: ./PizzaDay
-  links:
-    - mongodb
   ports:
     - "80:9000"
   volumes:
