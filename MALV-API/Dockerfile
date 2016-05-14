@@ -4,10 +4,7 @@ MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
 # Install Node.js
 
-ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 4.4.4
-
-RUN set -ex \
+RUN set -ex && \
     for key in \
         9554F04D7259F04124DE6B476D5A82AC7E37093B \
         94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
@@ -19,8 +16,12 @@ RUN set -ex \
         C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
     ; do \
         gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
-    done && \
-    curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
+    done
+
+ENV NPM_CONFIG_LOGLEVEL info
+ENV NODE_VERSION 4.4.4
+
+RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" && \
     curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" && \
     gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc && \
     grep " node-v$NODE_VERSION-linux-x64.tar.xz\$" SHASUMS256.txt | sha256sum -c - && \
@@ -30,7 +31,7 @@ RUN set -ex \
 # Install MALV-API
 RUN apt-get update && \
     apt-get install -y git && \
-    rm -rf /var/lib/apt/lists/* \
+    rm -rf /var/lib/apt/lists/* && \
     git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
     cd MALV-API && \
     git pull && \
