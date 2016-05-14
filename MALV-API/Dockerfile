@@ -29,10 +29,8 @@ RUN rm -rf /var/lib/apt/lists/*
 # this forces "apt-get update" in dependent images, which is also good
 
 # enable the universe
-RUN sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list
-
-# Install MALV-API
-RUN apt-get update && /
+RUN sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list && \
+    apt-get update && /
     apt-get install -y git && /
     rm -rf /var/lib/apt/lists/* && \
     git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
