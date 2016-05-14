@@ -25,11 +25,8 @@ RUN set -xe \
 	&& echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes
 
 # delete all the apt list files since they're big and get stale quickly
-RUN rm -rf /var/lib/apt/lists/*
-# this forces "apt-get update" in dependent images, which is also good
-
-# enable the universe
-RUN sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list && \
+RUN rm -rf /var/lib/apt/lists/* && \
+    sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list && \
     apt-get update && /
     apt-get install -y git && /
     rm -rf /var/lib/apt/lists/* && \
