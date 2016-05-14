@@ -2,6 +2,8 @@ FROM ubuntu:16.04
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
+RUN ls -l
+
 # Install MALV-API
 RUN apt-get update && /
     apt-get install -y git && /
