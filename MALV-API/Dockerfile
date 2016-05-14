@@ -1,19 +1,4 @@
-FROM scratch
-
-ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
-
-MAINTAINER Josselin Buils <josselin.buils@gmail.com>
-
-# Install dependencies
-RUN apt-get update && \
-    apt-get install -qy \
-        curl \
-        build-essential \
-        openssl \
-        libssl-dev \
-        pkg-config \
-        git && \
-    rm -rf /var/lib/apt/lists/*
+FROM buildpack-deps:xenial
 
 ENV NODE_VERSION 4.4.4
 
@@ -40,12 +25,6 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git
     git pull && \
     npm install -g npm && \
     npm install
-
-# Uninstall build dependencies
-RUN apt-get purge -yq \
-        curl \
-        build-essential \
-        pkg-config
 
 WORKDIR MALV-API
 
