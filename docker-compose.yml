@@ -7,4 +7,4 @@ pizzaday:
   ports:
     - "80:9000"
   volumes:
-      - /opt/mongodb/PizzaDay/db:/data/db
+      - /opt/mongodb/PizzaDay/db:PizzaDay/data/db
