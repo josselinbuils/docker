@@ -13,6 +13,8 @@ WORKDIR PizzaDay
 
 COPY config.json server/config.json
 
+EXPOSE 9000
+
 CMD ["npm", "start"]
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
@@ -22,7 +24,5 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
 
 VOLUME ["/data/db"]
 WORKDIR /data
-
-EXPOSE 27017
 
 CMD ["mongod", "--smallfiles"]

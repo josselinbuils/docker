@@ -9,4 +9,4 @@ pizzaday:
   ports:
     - "80:9000"
   volumes:
-      - /opt/mongodb/db:/data/db
+      - /opt/mongodb/PizzaDay/db:/data/db
