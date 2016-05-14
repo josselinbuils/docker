@@ -1,6 +1,23 @@
-FROM ubuntu:16.04
+FROM buildpack-deps:xenial
 
-MAINTAINER Luke Crooks "luke@pumalo.org"
+MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
-# Update aptitude with new repo
-RUN apt-get update && apt-get install git
+# Install git
+RUN apt-get update && /
+    apt-get install -y git && /
+    rm -rf /var/lib/apt/lists/* && \
+
+# Install MALV-API
+RUN git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
+    cd MALV-API && \
+    git pull && \
+    npm install -g npm && \
+    npm install
+
+WORKDIR MALV-API
+
+COPY config.json config.json
+
+EXPOSE 8080
+
+CMD ["npm", "start"]
