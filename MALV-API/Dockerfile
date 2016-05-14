@@ -5,13 +5,7 @@ ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
 # Install build dependencies
 RUN apt-get update && \
     apt-get install -y \
-        curl \
-        wget \
-        git \
-        build-essential
-        openssl
-        libssl-dev
-        pkg-config && \
+        build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
