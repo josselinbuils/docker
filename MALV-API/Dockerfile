@@ -1,4 +1,4 @@
-FROM ubuntu:15.10
+FROM buildpack-deps:wily
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
