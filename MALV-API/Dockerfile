@@ -1,7 +1,13 @@
-FROM node:4.4.4
+FROM ubuntu:16.04
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
+# Install Node.js
+RUN apt-get update && /
+    apt-get install -y nodejs && /
+    rm -rf /var/lib/apt/lists/*
+
+# Install MALV-API
 RUN apt-get update && /
     apt-get install -y git && /
     rm -rf /var/lib/apt/lists/* && \

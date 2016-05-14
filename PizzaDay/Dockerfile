@@ -2,6 +2,11 @@ FROM node:4.4.4
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
+# Install Node.js
+RUN apt-get update && /
+    apt-get install -y nodejs && /
+    rm -rf /var/lib/apt/lists/*
+
 # Install PizzaDay
 RUN apt-get update && \
     apt-get install -y git && \
