@@ -30,7 +30,11 @@ This repository contains docker configuration files which allow to run my node a
 
 - List all containers: `docker ps -a`
 
-- Remove an image and its containers: `docker rmi -f id/name`
+- Stop all containers: `docker stop $(docker ps -a -q)`
+
+- Remove all containers: `docker rm $(docker ps -a -q)`
+
+- Remove an image: `docker rmi -f id/name`
 
 - Access a container bash: `docker exec -i -t id/name bash`
 
