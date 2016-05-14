@@ -1,4 +1,4 @@
-FROM sratch
+FROM scratch
 
 ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
 
