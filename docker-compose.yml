@@ -2,13 +2,11 @@ malvapi:
   build: ./MALV-API
   ports:
     - "8080:8080"
-mongodb:
-  build: ./MongoDB
-  volumes:
-      - /opt/mongodb/db:/data/db
 pizzaday:
   build: ./PizzaDay
   links:
     - mongodb
   ports:
     - "80:9000"
+  volumes:
+      - /opt/mongodb/db:/data/db
