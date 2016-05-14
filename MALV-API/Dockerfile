@@ -1,6 +1,8 @@
 FROM scratch
 
-ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
+ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz
+
+RUN su
 
 # Install MALV-API
 RUN apt-get update && /
