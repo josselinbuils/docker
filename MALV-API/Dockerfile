@@ -4,14 +4,15 @@ ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
-# Install build dependencies
+# Install dependencies
 RUN apt-get update && \
     apt-get install -qy \
         curl \
         build-essential \
         openssl \
         libssl-dev \
-        pkg-config && \
+        pkg-config
+        git && \
     rm -rf /var/lib/apt/lists/*
 
 ENV NODE_VERSION 4.4.4
@@ -33,14 +34,6 @@ RUN set -ex && \
     curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" && \
     tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1
 
-# Uninstall build dependencies
-RUN apt-get purge -yq \
-        curl \
-        build-essential \
-        openssl \
-        libssl-dev \
-        pkg-config
-
 # Install MALV-API
 RUN apt-get update && \
     apt-get install -y git && \
@@ -50,6 +43,12 @@ RUN apt-get update && \
     git pull && \
     npm install -g npm && \
     npm install
+
+# Uninstall build dependencies
+RUN apt-get purge -yq \
+        curl \
+        build-essential \
+        pkg-config
 
 WORKDIR MALV-API
 
