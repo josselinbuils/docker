@@ -10,10 +10,7 @@ RUN apt-get update && \
         wget \
         bzr \
         git \
-        mercurial \
         openssh-client \
-        subversion \
-        \
         procps \
         autoconf \
         automake \
