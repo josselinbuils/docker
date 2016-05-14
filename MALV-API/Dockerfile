@@ -2,6 +2,8 @@ FROM scratch
 
 ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
 
+MAINTAINER Josselin Buils <josselin.buils@gmail.com>
+
 # Install build dependencies
 RUN apt-get update && \
     apt-get install -qy \
@@ -11,8 +13,6 @@ RUN apt-get update && \
         libssl-dev \
         pkg-config && \
     rm -rf /var/lib/apt/lists/*
-
-MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
 ENV NODE_VERSION 4.4.4
 
@@ -34,7 +34,7 @@ RUN set -ex && \
     tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1
 
 # Uninstall build dependencies
-RUN apt-get purge \
+RUN apt-get purge -yq \
         curl \
         build-essential \
         openssl \
