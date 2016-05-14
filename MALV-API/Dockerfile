@@ -2,9 +2,6 @@ FROM buildpack-deps:xenial
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
-RUN useradd -ms /bin/bash newuser
-USER newuser
-
 # Install MALV-API
 RUN apt-get update && /
     apt-get install -y git && /
