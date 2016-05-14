@@ -1,5 +1,7 @@
 FROM buildpack-deps:xenial
 
+MAINTAINER Josselin Buils <josselin.buils@gmail.com>
+
 ENV NODE_VERSION 4.4.4
 
 # Install Node.js
@@ -17,7 +19,8 @@ RUN set -ex && \
         gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
     done && \
     curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" && \
-    tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1
+    tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 && \
+    rm -rf "node-v$NODE_VERSION-linux-x64.tar.xz"
 
 # Install MALV-API
 RUN git clone --progress --verbose https://github.com/josselinbuils/MALV-API.git && \
