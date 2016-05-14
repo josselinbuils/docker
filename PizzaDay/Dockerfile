@@ -22,5 +22,6 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     apt-get install -y mongodb-org
 
 VOLUME ["/data/db"]
+WORKDIR /
 
 CMD ["npm", "start"]
