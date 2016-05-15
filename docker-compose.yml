@@ -1,4 +1,5 @@
 version: '2'
+
 services:
   malvapi:
     build: ./MALV-API
@@ -6,14 +7,14 @@ services:
       - "8080:8080"
   pizzaday:
     build: ./PizzaDay
+    depends_on:
+      - reverseproxy
     expose:
       - "9000"
     volumes:
         - /opt/mongodb/PizzaDay/db:/data/db
   reverseproxy:
     build: ./ReverseProxy
-    links:
-      - pizzaday
     ports:
       - "80:80"
       - "443:443"
