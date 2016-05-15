@@ -6,13 +6,13 @@ services:
       - "8080:8080"
   pizzaday:
     build: ./PizzaDay
-    depends_on:
-      - reverseproxy
     ports:
       - "9000:9000"
     volumes:
         - /opt/mongodb/PizzaDay/db:/data/db
   reverseproxy:
     build: ./ReverseProxy
+    links:
+      - pizzaday
     ports:
       - "80:80"
