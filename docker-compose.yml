@@ -13,6 +13,6 @@ services:
   reverseproxy:
     build: ./ReverseProxy
     links:
-      - pizzaday
+      - pizzaday:pizzaday
     ports:
       - "80:80"
