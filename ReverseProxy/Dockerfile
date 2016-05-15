@@ -34,5 +34,6 @@ WORKDIR ReverseProxy
 COPY config.json config.json
 
 EXPOSE 80
+EXPOSE 443
 
 CMD ["npm", "start"]
