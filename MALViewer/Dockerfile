@@ -29,7 +29,7 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/MALViewer.gi
     npm install -g npm && \
     npm install && \
     npm install -g bower && \
-    bower install
+    bower install --allow-root
 
 WORKDIR MALViewer
 
