@@ -24,7 +24,7 @@ RUN set -ex && \
 
 # Install MALViewer
 RUN git clone --progress --verbose https://github.com/josselinbuils/MALViewer.git && \
-    cd MALV-API && \
+    cd MALViewer && \
     git pull && \
     npm install -g npm && \
     npm install && \
