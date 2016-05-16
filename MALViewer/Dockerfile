@@ -22,25 +22,15 @@ RUN set -ex && \
     tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 && \
     rm -rf "node-v$NODE_VERSION-linux-x64.tar.xz"
 
-# Install PizzaDay
-RUN git clone --progress --verbose https://github.com/josselinbuils/PizzaDay.git && \
-    cd PizzaDay && \
+# Install MALViewer
+RUN git clone --progress --verbose https://github.com/josselinbuils/MALViewer.git && \
+    cd MALV-API && \
     git pull && \
     npm install -g npm && \
-    npm install
+    npm install && \
+    bower install
 
-# Install MongoDB
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
-    echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list && \
-    apt-get update && \
-    apt-get install -y mongodb-org && \
-    rm -rf /var/lib/apt/lists/*
-
-VOLUME ["/data/db"]
-
-WORKDIR PizzaDay
-
-COPY config.json server/config.json
+WORKDIR MALViewer
 
 EXPOSE $PORT
 
