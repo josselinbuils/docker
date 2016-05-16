@@ -33,6 +33,6 @@ WORKDIR MALV-API
 
 COPY config.json config.json
 
-EXPOSE 8080
+EXPOSE 9000
 
 CMD ["npm", "start"]

@@ -4,13 +4,6 @@ services:
 
   malvapi:
     build: ./MALV-API
-    environment:
-      PORT: 8080
-    ports:
-      - "8080:8080"
-
-  malviewer:
-    build: ./MALViewer
     depends_on:
       - reverseproxy
     environment:
@@ -18,14 +11,23 @@ services:
     expose:
       - "9000"
 
-  pizzaday:
-    build: ./PizzaDay
+  malviewer:
+    build: ./MALViewer
     depends_on:
       - reverseproxy
     environment:
       PORT: 9001
     expose:
       - "9001"
+
+  pizzaday:
+    build: ./PizzaDay
+    depends_on:
+      - reverseproxy
+    environment:
+      PORT: 9002
+    expose:
+      - "9002"
     volumes:
         - /opt/mongodb/PizzaDay/db:/data/db
 

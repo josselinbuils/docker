@@ -42,6 +42,6 @@ WORKDIR PizzaDay
 
 COPY config.json server/config.json
 
-EXPOSE 9001
+EXPOSE 9002
 
 CMD ["npm", "start"]
