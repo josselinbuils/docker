@@ -33,6 +33,6 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/MALViewer.gi
 
 WORKDIR MALViewer
 
-EXPOSE $PORT
+EXPOSE 9000
 
 CMD ["npm", "start"]
