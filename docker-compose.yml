@@ -26,6 +26,7 @@ services:
       - reverseproxy
     environment:
       PORT: 9002
+      NODE_ENV: production
     expose:
       - "9002"
     volumes:
