@@ -28,7 +28,7 @@ This repository contains docker configuration files which allow to run my node a
 
 - Remove an image: `docker rmi -f id/name`
 
-- Remove all images: `docker rmi -f $(docker images -a -q)`
+- Remove all images: `docker rmi -f $(docker images -q)`
 
 - List running containers: `docker ps`
 
