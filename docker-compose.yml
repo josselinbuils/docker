@@ -1,41 +1,8 @@
 version: '2'
-
 services:
-
   malvapi:
-    build: ./MALV-API
-    depends_on:
-      - reverseproxy
+    build: ./teravia
     environment:
-      PORT: 9000
+      PORT: 80
     expose:
-      - "9000"
-
-  malviewer:
-    build: ./MALViewer
-    depends_on:
-      - reverseproxy
-    environment:
-      PORT: 9001
-    expose:
-      - "9001"
-
-  pizzaday:
-    build: ./PizzaDay
-    depends_on:
-      - reverseproxy
-    environment:
-      PORT: 9002
-      NODE_ENV: production
-    expose:
-      - "9002"
-    volumes:
-        - /opt/mongodb/PizzaDay/db:/data/db
-
-  reverseproxy:
-    build: ./ReverseProxy
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /opt/letsencrypt:/letsencrypt
+      - "80"
