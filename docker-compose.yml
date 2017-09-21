@@ -2,7 +2,5 @@ version: '2'
 services:
   teravia:
     build: ./teravia
-    environment:
-      PORT: 80
-    expose:
-      - "80"
+    ports:
+      - "80:80"
