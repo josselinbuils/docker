@@ -9,7 +9,7 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/reverseProxy
     cd reverseProxy && \
     git pull && \
     npm install -g npm && \
-    npm install
+    npm install --unsafe-perm
 
 WORKDIR reverseProxy
 
