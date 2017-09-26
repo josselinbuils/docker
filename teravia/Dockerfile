@@ -13,6 +13,6 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/teravia.git 
 
 WORKDIR teravia
 
-EXPOSE 80
+EXPOSE 9000
 
 CMD ["npm", "start"]
