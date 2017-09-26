@@ -3,6 +3,8 @@ services:
 
   reverseproxy:
     build: ./reverseProxy
+    environment:
+      - NODE_ENV=production
     ports:
       - "80:80"
       - "443:443"
@@ -14,6 +16,8 @@ services:
     depends_on:
       - reverseproxy
     environment:
-          PORT: 9000
+      - HTTP_PREFIX=/teravia
+      - NODE_ENV=production
+      - PORT=9000
     expose:
       - "9000"

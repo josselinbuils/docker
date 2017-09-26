@@ -2,8 +2,6 @@ FROM node:6
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
-ENV NODE_ENV production
-
 RUN git clone --progress --verbose https://github.com/josselinbuils/teravia.git && \
     cd teravia && \
     git pull && \
@@ -11,7 +9,5 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/teravia.git 
     npm run build
 
 WORKDIR teravia
-
-EXPOSE 9000
 
 CMD ["npm", "start"]

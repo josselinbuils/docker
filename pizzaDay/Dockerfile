@@ -2,8 +2,6 @@ FROM node:6
 
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
-ENV NODE_ENV production
-
 # Install PizzaDay
 RUN git clone --progress --verbose https://github.com/josselinbuils/pizzaDay.git && \
     cd pizzaDay && \
@@ -24,7 +22,5 @@ VOLUME ["/data/db"]
 WORKDIR pizzaDay
 
 COPY config.json server/config.json
-
-EXPOSE 9000
 
 CMD ["npm", "start"]
