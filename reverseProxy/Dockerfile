@@ -8,7 +8,6 @@ ENV NODE_ENV production
 RUN git clone --progress --verbose https://github.com/josselinbuils/reverseProxy.git && \
     cd reverseProxy && \
     git pull && \
-    npm install -g npm && \
     npm install --unsafe-perm
 
 WORKDIR reverseProxy

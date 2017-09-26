@@ -8,7 +8,6 @@ ENV NODE_ENV production
 RUN git clone --progress --verbose https://github.com/josselinbuils/pizzaDay.git && \
     cd pizzaDay && \
     git pull && \
-    npm install -g npm && \
     npm install --unsafe-perm && \
     npm install -g gulp && \
     gulp build.prod
