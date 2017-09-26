@@ -1,6 +1,19 @@
 version: '2'
 services:
-  teravia:
-    build: ./teravia
+
+  reverseproxy:
+    build: ./reverseProxy
     ports:
       - "80:80"
+      - "443:443"
+    volumes:
+      - /opt/letsencrypt:/letsencrypt
+
+  teravia:
+    build: ./teravia
+    depends_on:
+      - reverseproxy
+    environment:
+          PORT: 9000
+    expose:
+      - "9000"
