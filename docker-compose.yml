@@ -3,13 +3,20 @@ services:
 
   reverseproxy:
     build: ./reverseProxy
-    environment:
-      - NODE_ENV=production
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - /opt/letsencrypt:/letsencrypt
+
+  portfolio:
+      build: ./portfolio
+      depends_on:
+        - reverseproxy
+      environment:
+        - HTTP_PREFIX=/
+      expose:
+        - "9000"
 
   teravia:
     build: ./teravia
@@ -17,7 +24,5 @@ services:
       - reverseproxy
     environment:
       - HTTP_PREFIX=/teravia
-      - NODE_ENV=production
-      - PORT=9000
     expose:
       - "9000"
