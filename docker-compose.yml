@@ -9,6 +9,15 @@ services:
     volumes:
       - /opt/letsencrypt:/letsencrypt
 
+  pathfinding:
+      build: ./pathFinding
+      depends_on:
+        - reverseproxy
+      environment:
+        - HTTP_PREFIX=/pathFinding
+      expose:
+        - "9000"
+
   portfolio:
       build: ./portfolio
       depends_on:
