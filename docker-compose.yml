@@ -1,6 +1,11 @@
 version: '2'
 services:
 
+  buildmanager:
+    build: ./buildManager
+    ports:
+      - "8090:8090"
+
   reverseproxy:
     build: ./reverseProxy
     ports:
