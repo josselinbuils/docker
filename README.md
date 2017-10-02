@@ -1,24 +1,14 @@
 # docker
 
-This repository contains docker configuration files which allow to run my node applications using a Ubuntu 15.04 server.
+This repository contains docker configuration files which allows to run my applications on my VPS.
 
 ### Run
 
   - `docker-compose up -d`
 
-### Run manually
+### Build
 
-- MALV-API
-
-  - Create a config.json file in docker/MALV-API
-  - `docker build -t malvapi ./MALV-API`
-  - `docker run --name MALVAPI -d -p 8080:8080 malvapi`
-
-- PizzaDay
-
-  - Create a config.json file in docker/PizzaDay
-  - `docker build -t pizzaday ./PizzaDay`
-  - `docker run --name PizzaDay -d -v /opt/mongodb/PizzaDay/db:/data/db -p 9000:9000 pizzaday`
+ - `docker-compose build --force-rm --no-cache service`
 
 ### Docker commands
 
