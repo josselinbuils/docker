@@ -23,6 +23,18 @@ services:
       expose:
         - "9000"
 
+  pizzaday:
+      build: ./PizzaDay
+      depends_on:
+        - reverseproxy
+      environment:
+        PORT: 9000
+        NODE_ENV: production
+      expose:
+        - "9000"
+      volumes:
+          - /opt/mongodb/PizzaDay/db:/data/db
+
   portfolio:
       build: ./portfolio
       depends_on:
