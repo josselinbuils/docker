@@ -25,7 +25,8 @@ services:
     depends_on:
       - reverseproxy
     environment:
-      NODE_ENV: production
+      - HTTP_PREFIX=/pizzaDay
+      - NODE_ENV=production
     expose:
       - "9000"
     volumes:
