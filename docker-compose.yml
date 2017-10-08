@@ -23,6 +23,7 @@ services:
   pizzaday:
     build: ./pizzaDay
     depends_on:
+      - mongodb
       - reverseproxy
     environment:
       - HTTP_PREFIX=/pizzaDay
