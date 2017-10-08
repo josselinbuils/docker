@@ -7,8 +7,7 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/pizzaDay.git
     cd pizzaDay && \
     git pull && \
     npm install --unsafe-perm && \
-    npm install -g gulp && \
-    gulp build.prod
+    npm run build
 
 # Install MongoDB
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
