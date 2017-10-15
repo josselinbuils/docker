@@ -10,4 +10,6 @@ RUN git clone --progress --verbose https://github.com/josselinbuils/portfolio.gi
 
 WORKDIR portfolio
 
+COPY config.json server/config.json
+
 CMD ["npm", "start"]
