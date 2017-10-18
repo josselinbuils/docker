@@ -5,6 +5,7 @@ services:
     build: ./buildManager
     ports:
       - "8090:8090"
+    restart: always
 
   pathfinding:
     build: ./pathFinding
