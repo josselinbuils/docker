@@ -2,17 +2,17 @@ version: '2'
 services:
 
   buildmanager:
-    build: ./buildManager
+    build: ./build-manager
     ports:
       - "8090:8090"
     restart: always
 
   pathfinding:
-    build: ./pathFinding
+    build: ./path-finding
     depends_on:
       - reverseproxy
     environment:
-      - HTTP_PREFIX=/pathFinding
+      - HTTP_PREFIX=/pathfinding
     expose:
       - "9000"
 
@@ -26,7 +26,7 @@ services:
       - "9000"
 
   reverseproxy:
-    build: ./reverseProxy
+    build: ./reverse-proxy
     ports:
       - "80:80"
       - "443:443"

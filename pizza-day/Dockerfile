@@ -3,13 +3,13 @@ FROM node:6
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
 # Install PizzaDay
-RUN git clone --progress --verbose https://github.com/josselinbuils/pizzaDay.git && \
-    cd pizzaDay && \
+RUN git clone --progress --verbose https://github.com/josselinbuils/pizza-day.git && \
+    cd pizza-day && \
     git pull && \
     npm install --unsafe-perm && \
     npm run build
 
-WORKDIR pizzaDay
+WORKDIR pizza-day
 
 COPY config.json server/config.json
 
