@@ -3,9 +3,8 @@ FROM node:8
 MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
 # Install PizzaDay
-RUN git clone --progress --verbose https://github.com/josselinbuils/pizza-day.git && \
+RUN git clone https://github.com/josselinbuils/pizza-day.git && \
     cd pizza-day && \
-    git pull && \
     npm install && \
     npm run build
 
