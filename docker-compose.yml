@@ -22,6 +22,7 @@ services:
       - reverseproxy
     environment:
       - HTTP_PREFIX=/
+      - NODE_ENV=production
     expose:
       - "9000"
 
