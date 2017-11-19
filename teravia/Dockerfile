@@ -4,7 +4,7 @@ MAINTAINER Josselin Buils <josselin.buils@gmail.com>
 
 RUN git clone https://github.com/josselinbuils/teravia.git && \
     cd teravia && \
-    npm install && \
+    npm install --production && \
     npm run build
 
 WORKDIR teravia
