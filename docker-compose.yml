@@ -53,10 +53,7 @@ services:
       - mongodb
       - reverseproxy
     environment:
-      - CLOUDINARY_URL=${CLOUDINARY_URL}
-      - COOKIE_SECRET=${COOKIE_SECRET}
       - HTTP_PREFIX=/tournoi-volley
-      - MONGO_URI:${MONGO_URI}
     expose:
       - "3000"
     volumes:

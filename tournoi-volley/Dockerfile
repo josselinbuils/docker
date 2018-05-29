@@ -8,4 +8,6 @@ RUN git clone https://github.com/josselinbuils/tournoi-volley.git && \
 
 WORKDIR tournoi-volley
 
+COPY config.json config.json
+
 CMD ["npm", "start"]
