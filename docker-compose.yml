@@ -16,6 +16,11 @@ services:
     expose:
       - "9000"
 
+  mongodb:
+    image: mongo:latest
+    volumes:
+        - /opt/mongodb/db:/data/db
+
   portfolio:
     build: ./portfolio
     depends_on:
@@ -41,3 +46,15 @@ services:
       - HTTP_PREFIX=/teravia
     expose:
       - "9000"
+
+  tournoivolley:
+    build: ./tournoi-volley
+    depends_on:
+      - mongodb
+      - reverseproxy
+    environment:
+      - HTTP_PREFIX=/tournoi-volley
+    expose:
+      - "3000"
+    volumes:
+        - /opt/mongodb/db:/data/db
