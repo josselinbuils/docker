@@ -22,7 +22,8 @@ services:
         - /opt/mongodb/db:/data/db
 
   portfolio:
-    build: ./portfolio
+    build:
+      context: https://github.com/josselinbuils/portfolio.git
     depends_on:
       - reverseproxy
     environment:
