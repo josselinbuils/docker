@@ -2,12 +2,12 @@ version: '2'
 services:
 
   buildmanager:
-    build: ./build-manager
+    build: https://github.com/josselinbuils/build-manager
     ports:
       - "8090:8090"
     restart: always
     volumes:
-    - ./build-manager:/home/
+    - ./build-manager:/build-manager
 
   pathfinding:
     build: ./path-finding
