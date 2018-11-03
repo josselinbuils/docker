@@ -9,15 +9,6 @@ services:
     volumes:
     - ./build-manager/config.json:/build-manager/config.json
 
-  pathfinding:
-    build: ./path-finding
-    depends_on:
-      - reverseproxy
-    environment:
-      - HTTP_PREFIX=/pathfinding
-    expose:
-      - "9000"
-
   mongodb:
     image: mongo:latest
     volumes:
