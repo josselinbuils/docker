@@ -7,7 +7,7 @@ services:
       - "8090:8090"
     restart: always
     volumes:
-    - ./build-manager:/build-manager
+    - ./build-manager/config.json:/build-manager/config.json
 
   pathfinding:
     build: ./path-finding
