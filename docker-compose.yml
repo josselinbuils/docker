@@ -6,6 +6,8 @@ services:
     ports:
       - "8090:8090"
     restart: always
+    volumes:
+    - ./build-manager:/home/
 
   pathfinding:
     build: ./path-finding
