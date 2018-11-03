@@ -43,7 +43,7 @@ services:
       - /opt/letsencrypt:/letsencrypt
 
   teravia:
-    build: ./teravia
+    build: https://github.com/josselinbuils/teravia.git
     depends_on:
       - reverseproxy
     environment:
