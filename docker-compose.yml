@@ -2,7 +2,7 @@ version: '2'
 services:
 
   buildmanager:
-    build: https://github.com/josselinbuils/build-manager
+    build: https://github.com/josselinbuils/build-manager.git
     ports:
       - "8090:8090"
     restart: always
