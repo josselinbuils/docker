@@ -44,7 +44,7 @@ services:
     - "9000"
 
   tournoivolley:
-    build: ./tournoi-volley
+    build: https://github.com/josselinbuils/tournoi-volley.git
     depends_on:
     - mongodb
     - reverseproxy
@@ -53,4 +53,5 @@ services:
     expose:
     - "3000"
     volumes:
+    - ./tournoi-volley/config.json:/tournoi-volley/config.json
     - /opt/mongodb/db:/data/db
