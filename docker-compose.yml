@@ -4,7 +4,7 @@ services:
   buildmanager:
     build: https://github.com/josselinbuils/build-manager.git
     ports:
-      - "8090:8090"
+    - "8090:8090"
     restart: always
     volumes:
     - ./build-manager/config.json:/build-manager/config.json
@@ -12,44 +12,45 @@ services:
   mongodb:
     image: mongo:latest
     volumes:
-        - /opt/mongodb/db:/data/db
+    - /opt/mongodb/db:/data/db
 
   portfolio:
     build: https://github.com/josselinbuils/portfolio.git
     depends_on:
-      - reverseproxy
+    - reverseproxy
     environment:
-      - HTTP_PREFIX=/
+    - HTTP_PREFIX=/
     expose:
-      - "9000"
+    - "9000"
     volumes:
     - ./portfolio/config.json:/portfolio/server/config.json
 
   reverseproxy:
-    build: ./reverse-proxy
+    build: https://github.com/josselinbuils/reverse-proxy.git
     ports:
-      - "80:80"
-      - "443:443"
+    - "80:80"
+    - "443:443"
     volumes:
-      - /opt/letsencrypt:/letsencrypt
+    - ./reverse-proxy/config.json:/reverse-proxy/config.json
+    - /opt/letsencrypt:/letsencrypt
 
   teravia:
     build: https://github.com/josselinbuils/teravia.git
     depends_on:
-      - reverseproxy
+    - reverseproxy
     environment:
-      - HTTP_PREFIX=/teravia
+    - HTTP_PREFIX=/teravia
     expose:
-      - "9000"
+    - "9000"
 
   tournoivolley:
     build: ./tournoi-volley
     depends_on:
-      - mongodb
-      - reverseproxy
+    - mongodb
+    - reverseproxy
     environment:
-      - HTTP_PREFIX=/tournoi-volley
+    - HTTP_PREFIX=/tournoi-volley
     expose:
-      - "3000"
+    - "3000"
     volumes:
-        - /opt/mongodb/db:/data/db
+    - /opt/mongodb/db:/data/db
