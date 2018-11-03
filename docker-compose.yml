@@ -24,13 +24,15 @@ services:
         - /opt/mongodb/db:/data/db
 
   portfolio:
-    build: ./portfolio
+    build: https://github.com/josselinbuils/portfolio.git
     depends_on:
       - reverseproxy
     environment:
       - HTTP_PREFIX=/
     expose:
       - "9000"
+    volumes:
+    - ./portfolio/config.json:/portfolio/server/config.json
 
   reverseproxy:
     build: ./reverse-proxy
