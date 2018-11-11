@@ -24,6 +24,7 @@ services:
     - "9000"
     volumes:
     - ./portfolio/config.json:/portfolio/server/config.json
+    - ./portfolio/datasets:/portfolio/dist/assets/dicom/datasets
 
   reverseproxy:
     build: https://github.com/josselinbuils/reverse-proxy.git
