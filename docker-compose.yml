@@ -32,6 +32,7 @@ services:
     ports:
     - "80:80"
     - "443:443"
+    restart: always
     volumes:
     - ./reverse-proxy/config.json:/reverse-proxy/config.json
     - /opt/letsencrypt:/letsencrypt
