@@ -1,10 +1,12 @@
-version: '2'
+version: '3.7'
 services:
-
   buildmanager:
     build: https://github.com/josselinbuils/build-manager.git
+    expose:
+      - "9000"
     ports:
     - "8090:8090"
+    - "9001:9001"
     restart: always
     volumes:
     - ./build-manager/config.json:/build-manager/server/config.json
