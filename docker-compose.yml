@@ -11,7 +11,7 @@ services:
     - "9001:9001"
     restart: always
     volumes:
-    - ./build-manager/config.json:/build-manager/server/config.json
+    - ./build-manager/config.json:/build-manager/config.json
 
   portfolio:
     build: https://github.com/josselinbuils/portfolio.git
