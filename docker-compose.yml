@@ -2,10 +2,6 @@ version: '3.7'
 services:
   buildmanager:
     build: https://github.com/josselinbuils/build-manager.git
-    environment:
-      - HTTP_PREFIX=/build-manager
-    expose:
-      - "9000"
     ports:
     - "8090:8090"
     - "9001:9001"
