@@ -24,7 +24,7 @@ services:
   portfolioreact:
     build: https://github.com/josselinbuils/portfolio-react.git
     environment:
-      - HTTP_PREFIX=/
+      - HTTP_PREFIX=/portfolio-react
       - NODE_ENV=production
     expose:
       - "9000"
