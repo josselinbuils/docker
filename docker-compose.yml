@@ -5,21 +5,21 @@ services:
     expose:
       - "9001"
     ports:
-    - "8090:8090"
+      - "8090:8090"
     restart: always
     volumes:
-    - ./build-manager/config.json:/build-manager/config.json
+      - ./build-manager/config.json:/build-manager/config.json
 
   portfolio:
     build: https://github.com/josselinbuils/portfolio.git
     environment:
-    - HTTP_PREFIX=/
-    - NODE_ENV=production
+      - HTTP_PREFIX=/
+      - NODE_ENV=production
     expose:
-    - "9000"
+      - "9000"
     volumes:
-    - ./portfolio/config.json:/portfolio/server/config.json
-    - ./portfolio/assets:/portfolio/assets
+      - ./portfolio/config.json:/portfolio/server/config.json
+      - ./portfolio/assets:/portfolio/assets
 
   portfolioreact:
     build: https://github.com/josselinbuils/portfolio-react.git
@@ -36,16 +36,16 @@ services:
     environment:
       - NODE_ENV=production
     ports:
-    - "80:80"
-    - "443:443"
+      - "80:80"
+      - "443:443"
     restart: always
     volumes:
-    - ./reverse-proxy/config.json:/reverse-proxy/config.json
-    - /opt/letsencrypt:/letsencrypt
+      - ./reverse-proxy/config.json:/reverse-proxy/config.json
+      - /opt/letsencrypt:/letsencrypt
 
   teravia:
     build: https://github.com/josselinbuils/teravia.git
     environment:
-    - HTTP_PREFIX=/teravia
+      - HTTP_PREFIX=/teravia
     expose:
-    - "9000"
+      - "9000"
