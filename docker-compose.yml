@@ -21,6 +21,16 @@ services:
     - ./portfolio/config.json:/portfolio/server/config.json
     - ./portfolio/assets:/portfolio/assets
 
+  portfolioreact:
+    build: https://github.com/josselinbuils/portfolio-react.git
+    environment:
+      - HTTP_PREFIX=/
+      - NODE_ENV=production
+    expose:
+      - "9000"
+    volumes:
+      - ./portfolio/config.json:/portfolio-react/server/config.json
+
   reverseproxy:
     build: https://github.com/josselinbuils/reverse-proxy.git
     environment:
