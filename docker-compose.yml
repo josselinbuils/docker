@@ -29,7 +29,7 @@ services:
     expose:
       - "9000"
     volumes:
-      - ./portfolio/config.json:/portfolio-react/server/config.json
+      - ./portfolio/config.json:/portfolio-react/config.json
 
   reverseproxy:
     build: https://github.com/josselinbuils/reverse-proxy.git
