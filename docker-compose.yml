@@ -29,6 +29,7 @@ services:
     expose:
       - "9000"
     volumes:
+      - ./portfolio/assets:/portfolio/assets
       - ./portfolio/config.json:/portfolio-react/config.json
 
   reverseproxy:
