@@ -42,6 +42,7 @@ services:
     restart: always
     volumes:
       - ./reverse-proxy/config.json:/reverse-proxy/config.json
+      - ./reverse-proxy/greenlock.d:/reverse-proxy/greenlock.d
       - /opt/letsencrypt:/letsencrypt
 
   teravia:
