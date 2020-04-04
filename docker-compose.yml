@@ -3,7 +3,7 @@ services:
   components:
     build: https://github.com/josselinbuils/components.git
     environment:
-      - DOCZ_BASE=/components
+      - HTTP_PREFIX=/components
     expose:
       - "9000"
 
