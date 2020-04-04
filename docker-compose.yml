@@ -2,6 +2,8 @@ version: '3.7'
 services:
   components:
     build: https://github.com/josselinbuils/components.git
+    environment:
+      - DOCZ_BASE=/components
     expose:
       - "9000"
 
