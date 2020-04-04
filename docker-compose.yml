@@ -1,5 +1,10 @@
 version: '3.7'
 services:
+  components:
+    build: https://github.com/josselinbuils/components.git
+    expose:
+      - "9000"
+
   buildmanager:
     build: https://github.com/josselinbuils/build-manager.git
     expose:
