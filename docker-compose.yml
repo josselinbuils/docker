@@ -36,7 +36,7 @@ services:
     expose:
       - "3000"
     volumes:
-      - ./portfolio/assets:/portfolio-next/assets
+      - ./portfolio/assets:/portfolio-next/public/assets
       - ./portfolio/config.json:/portfolio-next/config.json
       - ./portfolio/sharedCode.txt:/portfolio-next/sharedCode.txt
 
