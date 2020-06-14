@@ -34,7 +34,7 @@ services:
       - HTTP_PREFIX=/portfolio-next
       - NODE_ENV=production
     expose:
-      - "9000"
+      - "3000"
     volumes:
       - ./portfolio/assets:/portfolio-next/assets
       - ./portfolio/config.json:/portfolio-next/config.json
