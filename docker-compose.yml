@@ -28,6 +28,18 @@ services:
       - ./portfolio/config.json:/portfolio/server/config.json
       - ./portfolio/assets:/portfolio/assets
 
+  portfolionext:
+    build: https://github.com/josselinbuils/portfolio-next.git
+    environment:
+      - HTTP_PREFIX=/portfolio-next
+      - NODE_ENV=production
+    expose:
+      - "9000"
+    volumes:
+      - ./portfolio/assets:/portfolio-next/assets
+      - ./portfolio/config.json:/portfolio-next/config.json
+      - ./portfolio/sharedCode.txt:/portfolio-next/sharedCode.txt
+
   portfolioreact:
     build: https://github.com/josselinbuils/portfolio-react.git
     environment:
