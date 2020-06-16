@@ -20,37 +20,14 @@ services:
   portfolio:
     build: https://github.com/josselinbuils/portfolio.git
     environment:
-      - HTTP_PREFIX=/portfolio-angular
-      - NODE_ENV=production
-    expose:
-      - "9000"
-    volumes:
-      - ./portfolio/config.json:/portfolio/server/config.json
-      - ./portfolio/assets:/portfolio/assets
-
-  portfolionext:
-    build: https://github.com/josselinbuils/portfolio-next.git
-    environment:
-      - HTTP_PREFIX=/portfolio-next
+      - HTTP_PREFIX=/
       - NODE_ENV=production
     expose:
       - "3000"
     volumes:
-      - ./portfolio/assets:/portfolio-next/public/assets
-      - ./portfolio/config.json:/portfolio-next/config.json
-      - ./portfolio/sharedCode.txt:/portfolio-next/sharedCode.txt
-
-  portfolioreact:
-    build: https://github.com/josselinbuils/portfolio-react.git
-    environment:
-      - HTTP_PREFIX=/
-      - NODE_ENV=production
-    expose:
-      - "9000"
-    volumes:
-      - ./portfolio/assets:/portfolio-react/assets
-      - ./portfolio/config.json:/portfolio-react/config.json
-      - ./portfolio/sharedCode.txt:/portfolio-react/sharedCode.txt
+      - ./portfolio/assets:/portfolio/public/assets
+      - ./portfolio/config.json:/portfolio/config.json
+      - ./portfolio/sharedCode.txt:/portfolio/sharedCode.txt
 
   reverseproxy:
     build: https://github.com/josselinbuils/reverse-proxy.git
