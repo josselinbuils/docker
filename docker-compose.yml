@@ -1,11 +1,12 @@
 version: '3.7'
 services:
-  components:
-    build: https://github.com/josselinbuils/components.git
+  blog:
+    build: https://github.com/josselinbuils/blog.git
     environment:
-      - HTTP_PREFIX=/components
+      - HTTP_PREFIX=/blog
+      - NODE_ENV=production
     expose:
-      - "9000"
+      - "3000"
 
   buildmanager:
     build: https://github.com/josselinbuils/build-manager.git
@@ -16,6 +17,13 @@ services:
     restart: always
     volumes:
       - ./build-manager/config.json:/build-manager/config.json
+
+  components:
+    build: https://github.com/josselinbuils/components.git
+    environment:
+      - HTTP_PREFIX=/components
+    expose:
+      - "9000"
 
   portfolio:
     build: https://github.com/josselinbuils/portfolio.git
