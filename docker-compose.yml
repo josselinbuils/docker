@@ -1,10 +1,11 @@
 version: '3.7'
 services:
   blog:
-    build: https://github.com/josselinbuils/blog.git
-    args:
-      - HTTP_PREFIX=/blog
-      - NODE_ENV=production
+    build:
+      context: https://github.com/josselinbuils/blog.git
+      args:
+        - HTTP_PREFIX=/blog
+        - NODE_ENV=production
     environment:
       - HTTP_PREFIX=/blog
       - NODE_ENV=production
