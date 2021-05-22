@@ -21,18 +21,6 @@ services:
     volumes:
       - ./build-manager/config.json:/build-manager/config.json
 
-  components:
-    build: https://github.com/josselinbuils/components.git
-    environment:
-      - HTTP_PREFIX=/components
-    expose:
-      - "9000"
-
-  mongodb:
-    image: mongo:4.2
-    volumes:
-      - /opt/mongodb/db:/data/db
-
   portfolio:
     build: https://github.com/josselinbuils/portfolio.git
     environment:
@@ -64,16 +52,3 @@ services:
       - HTTP_PREFIX=/teravia
     expose:
       - "9000"
-
-  tournoivolley:
-    build: https://github.com/josselinbuils/tournoi-volley.git
-    depends_on:
-      - mongodb
-      - reverseproxy
-    environment:
-      - HTTP_PREFIX=/tournoi-volley
-    expose:
-      - "3000"
-    volumes:
-      - ./tournoi-volley/config.json:/tournoi-volley/config.json
-      - /opt/mongodb/db:/data/db
