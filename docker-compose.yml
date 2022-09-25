@@ -31,7 +31,7 @@ services:
     volumes:
       - ./portfolio/assets:/portfolio/public/assets
       - ./portfolio/config.json:/portfolio/config.json
-      - ./portfolio/sharedCode.txt:/portfolio/sharedCode.txt
+      - ./portfolio/persistentState.json:/portfolio/persistentState.json
 
   reverseproxy:
     build: https://github.com/josselinbuils/reverse-proxy.git
