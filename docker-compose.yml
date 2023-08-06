@@ -10,11 +10,19 @@ services:
       - NODE_ENV=production
     expose:
       - "3000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
 
   buildmanager:
     build: https://github.com/josselinbuils/build-manager.git
     expose:
       - "9001"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
     ports:
       - "8090:8090"
     restart: always
@@ -28,6 +36,10 @@ services:
       - NODE_ENV=production
     expose:
       - "3000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
     volumes:
       - ./portfolio/assets:/portfolio/public/assets
       - ./portfolio/config.json:/portfolio/config.json
@@ -37,6 +49,10 @@ services:
     build: https://github.com/josselinbuils/reverse-proxy.git
     environment:
       - NODE_ENV=production
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
     ports:
       - "80:80"
       - "443:443"
@@ -52,3 +68,7 @@ services:
       - HTTP_PREFIX=/teravia
     expose:
       - "9000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
