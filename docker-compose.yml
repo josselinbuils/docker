@@ -46,11 +46,7 @@ services:
       - ./portfolio/persistentState.json:/portfolio/persistentState.json
 
   reverseproxy:
-    build: https://github.com/josselinbuils/reverse-proxy.git
-    environment:
-      - NODE_ENV=production
-      # SIGUSR2 writes a diagnostic report (JS stack, open sockets) to ./reverse-proxy/reports.
-      - NODE_OPTIONS=--report-on-signal --report-signal=SIGUSR2 --report-directory=/reports
+    image: caddy:2.10.2-alpine
     logging:
       driver: "json-file"
       options:
@@ -61,10 +57,9 @@ services:
       - "443:443"
     restart: always
     volumes:
-      - ./reverse-proxy/config.json:/reverse-proxy/config.json
-      - ./reverse-proxy/greenlock.d:/reverse-proxy/greenlock.d
-      - /opt/letsencrypt:/letsencrypt
-      - ./reverse-proxy/reports:/reports
+      - ./reverse-proxy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./reverse-proxy/caddy/data:/data
+      - ./reverse-proxy/caddy/config:/config
 
   teravia:
     build: https://github.com/josselinbuils/teravia.git
