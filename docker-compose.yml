@@ -49,10 +49,13 @@ services:
     build: https://github.com/josselinbuils/reverse-proxy.git
     environment:
       - NODE_ENV=production
+      # SIGUSR2 writes a diagnostic report (JS stack, open sockets) to ./reverse-proxy/reports.
+      - NODE_OPTIONS=--report-on-signal --report-signal=SIGUSR2 --report-directory=/reports
     logging:
       driver: "json-file"
       options:
-        max-size: "100k"
+        max-size: "10m"
+        max-file: "5"
     ports:
       - "80:80"
       - "443:443"
@@ -61,6 +64,7 @@ services:
       - ./reverse-proxy/config.json:/reverse-proxy/config.json
       - ./reverse-proxy/greenlock.d:/reverse-proxy/greenlock.d
       - /opt/letsencrypt:/letsencrypt
+      - ./reverse-proxy/reports:/reports
 
   teravia:
     build: https://github.com/josselinbuils/teravia.git
@@ -72,3 +76,19 @@ services:
       driver: "json-file"
       options:
         max-size: "100k"
+
+  volleyballstats:
+    image: nginx:1.27-alpine
+    expose:
+      - "80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    restart: always
+    volumes:
+      - ./volleyball-stats/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./volleyball-stats/site:/usr/share/nginx/html/volleyball:ro
+      - ./volleyball-stats/video_key.conf:/etc/nginx/volleyball_video_key.conf:ro
+      - ./volleyball-stats/feedback:/var/log/nginx/feedback

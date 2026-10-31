@@ -1,0 +1,2 @@
+# Volleyball stats hosting: CPU, reverse proxy and nginx state every minute (see /usr/local/bin/vbs-monitor.sh).
+* * * * * root flock -n /run/vbs-monitor.lock /usr/local/bin/vbs-monitor.sh > /dev/null 2>&1
