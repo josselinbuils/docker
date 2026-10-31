@@ -14,6 +14,7 @@ services:
       driver: "json-file"
       options:
         max-size: "100k"
+    restart: always
 
   buildmanager:
     build: https://github.com/josselinbuils/build-manager.git
