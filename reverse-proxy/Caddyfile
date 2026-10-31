@@ -1,0 +1,58 @@
+# The VPS's sites, behind Cloudflare. Caddy gets and renews the certificates itself (HTTP-01, which
+# Cloudflare lets through) and redirects HTTP to HTTPS.
+{
+	email josselin.buils@gmail.com
+	servers {
+		protocols h1 h2
+	}
+}
+
+www.josselinbuils.dev {
+	redir https://josselinbuils.dev{uri} permanent
+}
+
+josselinbuils.dev {
+	# The volleyball service sends its own gzip copies, made beforehand.
+	@compress not path /volleyball*
+	encode @compress zstd gzip
+	# What the former Node proxy added (helmet), unless the service sets it.
+	header {
+		?Strict-Transport-Security "max-age=15552000; includeSubDomains"
+		?X-Content-Type-Options nosniff
+		?X-DNS-Prefetch-Control off
+		?X-Download-Options noopen
+		?X-Permitted-Cross-Domain-Policies none
+		?Referrer-Policy no-referrer
+		?Cross-Origin-Opener-Policy same-origin
+		?Cross-Origin-Resource-Policy same-origin
+		?Origin-Agent-Cluster ?1
+		?X-XSS-Protection 0
+		-X-Powered-By
+	}
+	log {
+		output stdout
+		format json
+	}
+	handle /build-manager* {
+		# Websockets only.
+		@websocket header Upgrade websocket
+		handle @websocket {
+			reverse_proxy buildmanager:9001
+		}
+		handle {
+			respond 404
+		}
+	}
+	handle /blog* {
+		reverse_proxy blog:3000
+	}
+	handle /teravia* {
+		reverse_proxy teravia:9000
+	}
+	handle /volleyball* {
+		reverse_proxy volleyballstats:80
+	}
+	handle {
+		reverse_proxy portfolio:3000
+	}
+}

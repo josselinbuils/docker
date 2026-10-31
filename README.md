@@ -17,7 +17,7 @@ This repository contains docker configuration files which allows to run my appli
 
 ### Monitoring
 
-`monitoring/vbs-monitor.sh` logs the CPU, the reverse proxy's and nginx's state every minute to
+`monitoring/vbs-monitor.sh` logs the CPU, the reverse proxy's (Caddy) and nginx's state every minute to
 `/var/log/vbs-monitor/summary.log`, and a snapshot of what is busy when the CPU is
 (`/var/log/vbs-monitor/snapshots/`). Install:
 

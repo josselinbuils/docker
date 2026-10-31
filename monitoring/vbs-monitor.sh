@@ -3,19 +3,18 @@
 # CPU busy over 5 s, the reverse proxy's and the volleyball nginx workers' CPU, the proxy's socket
 # states, nginx's requests in progress, sshd logins in progress and the top processes. When the CPU is
 # busy, saves a snapshot in /var/log/vbs-monitor/snapshots/: processes, sockets, the syscalls the
-# busy processes make, the proxy's node report (JS stack, handles) and the containers' recent logs.
+# busy processes make, Caddy's goroutines (what each request waits on) and the containers' recent logs.
 set -u
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 DIR=/var/log/vbs-monitor
-REPORTS=/home/ubuntu/docker/reverse-proxy/reports
 BUSY_CPU=${BUSY_CPU:-80}       # % of all cores, over the sample
 BUSY_PROC=${BUSY_PROC:-40}     # % of one core, for the proxy or one nginx worker
 SNAP_EVERY=${SNAP_EVERY:-600}  # seconds between two snapshots
 KEEP=40          # snapshots kept
 mkdir -p "$DIR/snapshots"
 
-proxy=$(pgrep -n -x -f '(/usr/local/bin/)?node dist/proxy.js')
+proxy=$(docker inspect -f '{{.State.Pid}}' docker-reverseproxy-1 2>/dev/null)
 master=$(docker inspect -f '{{.State.Pid}}' docker-volleyballstats-1 2>/dev/null)
 workers=$( [ -n "$master" ] && pgrep -P "$master" | tr '\n' ' ')
 
@@ -67,15 +66,8 @@ if { [ "$busy" -ge "$BUSY_CPU" ] || [ "$max_proc" -ge "$BUSY_PROC" ]; } && [ $((
   for p in $busy_pids; do timeout -s INT 2 strace -tt -T -f -p "$p" -o "$s/strace_$p.txt" > /dev/null 2>&1 & done
   wait
   for f in "$s"/strace_[0-9]*.txt; do [ -f "$f" ] && head -3000 "$f" > "$f.cut" && mv "$f.cut" "$f"; done
-  # The proxy's JavaScript stack and open handles: node --report-on-signal (NODE_OPTIONS) on SIGUSR2,
-  # only when the proxy was started with it (else SIGUSR2 would stop it).
-  if [ -n "$proxy" ] && tr '\0' '\n' < "/proc/$proxy/environ" | grep -q -- '--report-on-signal'; then
-    kill -USR2 "$proxy"
-    sleep 5
-    report=$(ls -t "$REPORTS"/*.json 2>/dev/null | head -1)
-    [ -n "$report" ] && cp -p "$report" "$s/"
-    ls -t "$REPORTS"/*.json 2>/dev/null | tail -n +21 | xargs -r rm -f
-  fi
+  # Caddy's goroutines, from its admin endpoint inside the container.
+  docker exec docker-reverseproxy-1 wget -qO- 'http://localhost:2019/debug/pprof/goroutine?debug=1' > "$s/caddy_goroutines.txt" 2>&1
   docker logs --since 20m docker-reverseproxy-1 > "$s/proxy.log" 2>&1
   docker logs --since 20m docker-volleyballstats-1 > "$s/nginx.log" 2>&1
   journalctl -u ssh --since -20min --no-pager 2>/dev/null | tail -300 > "$s/sshd.log"
