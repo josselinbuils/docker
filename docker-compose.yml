@@ -45,6 +45,7 @@ services:
       - ./portfolio/assets:/portfolio/public/assets
       - ./portfolio/config.json:/portfolio/config.json
       - ./portfolio/persistentState.json:/portfolio/persistentState.json
+    restart: always
 
   reverseproxy:
     image: caddy:2.10.2-alpine
@@ -72,6 +73,7 @@ services:
       driver: "json-file"
       options:
         max-size: "100k"
+    restart: always
 
   volleyballstats:
     image: nginx:1.27-alpine
